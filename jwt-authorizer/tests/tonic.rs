@@ -78,10 +78,7 @@ impl NamedService for GreeterServer {
     const NAME: &'static str = "hello";
 }
 
-async fn app(
-    jwt_auth: JwtAuthorizer<User>,
-    expected_sub: String,
-) -> AuthorizationService<tonic::service::Routes, User> {
+async fn app(jwt_auth: JwtAuthorizer<User>, expected_sub: String) -> AuthorizationService<tonic::service::Routes, User> {
     let layer = jwt_auth.build().await.unwrap().into_layer();
     let routes = tonic::service::Routes::new(GreeterServer { expected_sub }).prepare();
 

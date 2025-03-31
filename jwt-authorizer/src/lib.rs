@@ -1,7 +1,7 @@
 #![doc = include_str!("../docs/README.md")]
 
-use axum::{extract::FromRequestParts, http::request::Parts};
 use axum::extract::OptionalFromRequestParts;
+use axum::{extract::FromRequestParts, http::request::Parts};
 use jsonwebtoken::TokenData;
 use serde::de::DeserializeOwned;
 
